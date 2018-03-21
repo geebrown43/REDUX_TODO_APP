@@ -1,22 +1,16 @@
 export default function reducer(state = [], action) {
   switch (action.type) {
     case "ADD":
-      return [
-        ...state,
-        action
-      ];
+      return [...state, action];
     case "COMPLETE":
-      return state.map(
-        a =>
-          a.id === action.id
-            ? { ...a, completed: action.completed, style: action.style }
-            : a
-      );
-    case "NOT_COMPLETE":
-      return state.map(
-        a => (a.id === action.id ? { ...a, completed: action.completed, style: action.style } : a)
-      );
-    default:
-      return state;
+      return state.map(a => {
+        if (a.completed === false && a.id === action.id) {
+          return { ...a, completed: action.completed, style: action.style };
+        } else if (a.completed === true && a.id === action.id) {
+          return { ...a, completed: false, style: "none" };
+        } else {
+          return a;
+        }
+      });
   }
 }
