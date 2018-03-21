@@ -10,7 +10,7 @@ import {
 import reducers from "../reducers/reducer";
 import logger from 'redux-logger'
 import { createStore, applyMiddleware } from "redux";
-import {SHOW_LINE, HIDE_LINE, ADD_ITEM} from '../actions/types'
+import * as types from '../actions/types'
 
 let store = createStore(reducers, applyMiddleware(logger))
 const { width, height } = Dimensions.get("window");
@@ -23,13 +23,13 @@ export default class Todo extends React.Component {
 
   _addTodo = e => {
     let text = this.state.value;
-    store.dispatch(ADD_ITEM(text));
+    store.dispatch(types.ADD_ITEM(text));
     this.setState({ data: store.getState(), value: "" });
     this.textInput.clear();
   };
 
   _markComplete = i => {
-    store.dispatch(SHOW_LINE(i));
+    store.dispatch(types.SHOW_LINE(i));
     this.setState({data: store.getState()})
   };
 
