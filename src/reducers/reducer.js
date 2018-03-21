@@ -3,7 +3,7 @@ export default function reducer(state = [], action) {
     case "ADD":
       return [
         ...state,
-        { text: action.text, id: action.id, completed: false, style: action.style }
+        action
       ];
     case "COMPLETE":
       return state.map(
