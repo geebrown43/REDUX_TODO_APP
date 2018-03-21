@@ -16,12 +16,3 @@ export const SHOW_LINE = id => {
     style: 'line-through'
   };
 };
-
-export const HIDE_LINE = id => {
-    return {
-      type: "NOT_COMPLETE",
-      completed: false,
-      id,
-      style: 'none'
-    }
-}
