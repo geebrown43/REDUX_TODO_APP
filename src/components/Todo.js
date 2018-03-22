@@ -24,7 +24,7 @@ export default class Todo extends React.Component {
   _addTodo = e => {
     let text = this.state.value;
     store.dispatch(types.ADD_ITEM(text));
-    this.setState({ data: store.getState()});
+    this.setState({ data: store.getState(), value: "" });
     this.textInput.clear();
   };
 
